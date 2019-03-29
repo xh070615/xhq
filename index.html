@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.clock{
+				margin: 0 auto;
+				width: 600px;
+				height: 600px;
+				background: url(img/clock.jpg) no-repeat;
+				position: relative;
+			}
+			.clock div{
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.clock div.hour{
+				background: url(img/hour.png) no-repeat center center;
+			}
+			.clock div.minute{
+				background: url(img/minute.png) no-repeat center center;
+			}
+			.clock div.second{
+				background: url(img/second.png) no-repeat center center;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				function $(id){
+					return document.getElementById(id);
+				}
+				function fn(){
+					var currentTime=new Date();
+					var ms=currentTime.getMilliseconds();//毫秒
+					var second=currentTime.getSeconds()+ms/1000;
+					var minute=currentTime.getMinutes()+second/60;
+					var hour=currentTime.getHours()+minute/60;
+					$("s").style.transform="rotate("+second*6+"deg)";
+					$("m").style.transform="rotate("+minute*6+"deg)";
+					$("h").style.transform="rotate("+hour*30+"deg)";
+				}
+			setInterval(fn,1000);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="clock">
+			 
+			<div class="hour" id="h">
+				
+			</div>
+			<div class="minute" id="m">
+				 
+			</div>
+			<div class="second" id="s">
+			 
+			</div>
+		</div>
+	</body>
+</html>
